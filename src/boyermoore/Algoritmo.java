@@ -2,9 +2,13 @@
 package boyermoore;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Math.abs;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Algoritmo {
@@ -72,6 +76,7 @@ public class Algoritmo {
                     buscaPalavra(linha);
                 }
                 arq.close();
+                System.out.println("\nArquivo lido com sucesso!");
         } catch (IOException e) {
             linha = "NULL";
             System.out.println("Erro ao abrir o arquivo entrada1.txt");
@@ -80,7 +85,28 @@ public class Algoritmo {
     
     /*funcao que busca por ocorrencias da palavra chave em cada linha do arquivo*/
     public void buscaPalavra(String linha){
-        
+        saidaArquivo();//chama a funcao de saida a cada linha lida do arquivo
     }
+    
+    /*
+    funcao que cria arquivo de saida contendo a ocorrencia da palavra chave em cada linha do arquivo lido
+    e a posicao inicial de cada ocorrencia da palavra
+    */
+    public void saidaArquivo(){
+        try {
+            FileWriter saida = new FileWriter("saida1.txt");
+            BufferedWriter sai = new BufferedWriter(saida);
+            
+            sai.write(linha);//escreve cada linha do arquivo de entrada na saida (APENAS PARA TESTE)
+            sai.newLine();
+            sai.flush();
+            
+            System.out.println("Arquivo escrito com sucesso!");
+        } catch (IOException ex) {
+            Logger.getLogger(Algoritmo.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro ao escrever no arquivo saida1.txt");
+        }
+    }
+
     
 }
