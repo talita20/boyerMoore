@@ -8,7 +8,7 @@ public class main {
     public static void main(String[] args) {
         
         Scanner leitura = new Scanner(System.in);
-        System.out.println("Digite a chave:");
+        System.out.println("Digite a palavra chave:");
         String key = "";
         key = leitura.nextLine();
         
