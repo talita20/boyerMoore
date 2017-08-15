@@ -16,6 +16,5 @@ public class main {
         a.preProcessamento(key);
         a.leArquivo();
         
-        
     }
 }
