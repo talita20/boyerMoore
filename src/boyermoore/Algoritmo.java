@@ -1,9 +1,11 @@
 package boyermoore;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 //import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 //import java.io.FileReader;
 //import java.io.FileWriter;
 import java.io.IOException;
@@ -36,13 +38,12 @@ public class Algoritmo {
             valor[i] = tam;
         }
 
-        /*System.out.println("Vetor de valores do alfabeto: ");
-        System.out.print(" ( ");
-        for (int i = 0; i < alfabeto.length; i++) {
-            System.out.print(valor[i] + ",");
-        }
-        System.out.print(" ) ");*/
-        
+//        System.out.println("Vetor de valores do alfabeto: ");
+//        System.out.print(" ( ");
+//        for (int i = 0; i < alfabeto.length; i++) {
+//            System.out.print(valor[i] + ",");
+//        }
+//        System.out.print(" ) ");
         //insercao da palavra chave em um vetor
         chave = key.toCharArray();
 
@@ -52,18 +53,18 @@ public class Algoritmo {
                 if (chave[i] == alfabeto[j]) {
                     valor[j] -= i + 1;
                 }
-                if (valor[j] < 0) {
-                    valor[j] = 0;
+                if (valor[j] <= 0) {
+                    valor[j] = 1;
                 }
             }
         }
 
-        /*System.out.println("\nVetor de valores do alfabeto após a atualização: ");
-        System.out.print(" ( ");
-        for (int i = 0; i < alfabeto.length; i++) {
-            System.out.print(valor[i] + ",");
-        }
-        System.out.print(" ) ");*/
+//        System.out.println("\nVetor de valores do alfabeto após a atualização: ");
+//        System.out.print(" ( ");
+//        for (int i = 0; i < alfabeto.length; i++) {
+//            System.out.print(valor[i] + ",");
+//        }
+//        System.out.print(" ) ");
     }
 
     /* funcao que faz a leitura do arquivo entrada01.txt e faz a chamada da funcao buscaPalavra(String linha) para
@@ -95,116 +96,52 @@ public class Algoritmo {
     public void buscaPalavra(String linha, int num) {
         frase = linha.toCharArray();//passa a linha do arquivo para um vetor
         /*
-        cont -> contador de ocorrencias da chave
-        posicao -> possicao inicial de ocorrencia da chave
-        salto -> salto da chave
-        flag -> igual a 1 quando as letras sao iguais
-        j -> contador do while
-         */
-        int cont = 0, posicao, salto = 0, flag = 0, j;
-
-        for (int i = tam - 1; i >= 0; i--) {//o i vai do ultimo caractere da chave ate o primeiro
-            //System.out.print(frase[i]+" == "+ chave[i]+"\n");
-            if (frase[i] == chave[i]) {
-                posicao = tam - i;//salva a posicao inicial
-                j = i;
-                do {//varre a palavra ate o caractere inicial
+        cont -> contador de ocorrencias
+        posicao -> posicao inicial do padrao
+        flag -> verifica se achou o padrao
+        j -> percorre a palavra chave
+        i -> percorre a frase
+        fim -> guarda o valor inicial de i
+        */
+        int cont = 0, posicao = -1, flag = 0, j = tam - 1, i = tam - 1, fim = tam-1;
+        while (i < frase.length && j < tam) {
+            if (frase[i] == chave[j]) {//caso os caracteres sejam iguais 
+                while (frase[i] == chave[j]) {//enquanto os caracteres sao iguais
+                    i--;
                     j--;
-                    if (frase[j] == chave[j]) {
-                        flag = 1;
-                    } else {
-                        flag = 0;
-                        /* se os caracteres sao diferentes, salta o vetor */
-                        salto += valor[i];
-                        int pulo = tam - 1 + salto;
-                        i = 0;
-                        j = 0;
-                        posSalto(pulo, num);//chamada da funcao do salto
+                    if (j == 0) {//se chegou no inicio da palavra chave
+                        flag = 1;//achou o padrao
+                        posicao = i;//salva posicao inicial
+                        break;
                     }
-                } while (j > 0);
-            } else {
-                /* se os caracteres sao diferentes, salta o vetor */
-                salto += valor[i];
-                int pulo = tam - 1 + salto;
-                i = 0;
-                posSalto(pulo, num);//chamada da funcao do salto
+                }
+            } else {//se os caracteres sao diferentes
+                i += valor[i];//salto
+                flag = 0;//nao achou o padrao
             }
-            /* se o flag = 1, incrementa o contador */
-            if (flag == 1) {
-                cont++;
-                System.out.println("Num= " + num + " Cont= " + cont + " Posição inicial= ");//exibe a linha, o contador e a
-                //posicao inicial da chave na frase
-                //saidaArquivo(num, cont, posicao);//escreve no arquivo de saida
+                j = tam - 1;//reposiciona o j no fim da palavra chave
+                fim = fim+1;//incrementa o fim
+                i = fim;//reposiciona o i na frase
+            if (flag == 1) {//se encontrou o padrao
+                cont += 1;
+                saidaArquivo(num, cont, posicao);//escreve no arquivo
             }
         }
     }
 
-    /* funcao que busca por ocorrencias da palavra chave em cada linha do arquivo apos o salto */
-    public void posSalto(int pulo, int num) {
-        int cont = 0, posicao, salto = 0, flag = 0, j;
-        for (int k = pulo - 1; k >= tam - 1; k--) {
-            //avancar a chave "pulo" posicoes
-            
-            
-            
-            /* esse eh o mesmo codigo da funcao anterior. 
-                Verificar se ela funciona no posSalto()
-            */
-//            if(frase[k] == chave[k]){
-//                posicao = pulo-1;
-//                j = k;
-//                 do {//varre a palavra ate o caractere inicial
-//                    j--;
-//                    if (frase[j] == chave[k]) {
-//                        flag = 1;
-//                    } else {
-//                        flag = 0;
-//                        /* se os caracteres sao diferentes, salta o vetor */
-//                        salto += valor[k];
-//                        pulo = pulo - 1 + salto;
-//                        k = 0;
-//                        j = 0;
-//                        posSalto(pulo, num);//chamada da funcao do salto
-//                    }
-//                } while (j > 0);
-//            }else{
-//                 /* se os caracteres sao diferentes, salta o vetor */
-//                salto += valor[k];
-//                pulo = pulo - 1 + salto;
-//                k = 0;
-//                posSalto(pulo, num);//chamada da funcao do salto
-//            }
-//            /* se o flag = 1, incrementa o contador */
-//            if (flag == 1) {
-//                cont++;
-//                System.out.println("Num= " + num + " Cont= " + cont + " Posição inicial= ");//exibe a linha, o contador e a
-//                //posicao inicial da chave na frase
-//                //saidaArquivo(num, cont, posicao);//escreve no arquivo de saida
-//            }
-            
-            
-            
-        }
-    }
 
     /* funcao que cria arquivo de saida contendo a ocorrencia da palavra chave em cada linha do arquivo lido
     e a posicao inicial de cada ocorrencia da palavra */
     public void saidaArquivo(int num, int cont, int posicao) {
         try {
-            /* não aceita caracteres especiais
-            FileWriter saida = new FileWriter("saida1.txt");
+            /* não aceita caracteres especiais */
+            FileWriter saida = new FileWriter("saida1.txt", true);
             BufferedWriter sai = new BufferedWriter(saida);
-            sai.write("Linha "+ num + " - Número de ocorrências da palavra: "+ cont + " Posição de ocorrência: "+ posicao);
-            sai.write();
-            sai.newLine();
-            sai.flush();
-             */
-            
-            //aceita caracteres especiais
-            OutputStreamWriter sai = new OutputStreamWriter(new FileOutputStream("saida1.txt"), "UTF-8");
-            
+
             //escreve no arquivo
             sai.write("Linha " + num + " - Número de ocorrências da palavra: " + cont + " Posição de ocorrência: " + posicao);
+            sai.newLine();
+            sai.flush();
             sai.close();
 
         } catch (IOException ex) {
