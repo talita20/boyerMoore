@@ -1,19 +1,14 @@
-﻿Linha 1 - Número de ocorrências da palavra: 1 Posição de ocorrência: 0
-Linha 1 - Número de ocorrências da palavra: 2 Posição de ocorrência: 5
-Linha 1 - Número de ocorrências da palavra: 3 Posição de ocorrência: 11
-Linha 2 - Número de ocorrências da palavra: 1 Posição de ocorrência: 2
-Linha 2 - Número de ocorrências da palavra: 2 Posição de ocorrência: 10
-Linha 4 - Número de ocorrências da palavra: 1 Posição de ocorrência: 0
-Linha 4 - Número de ocorrências da palavra: 2 Posição de ocorrência: 6
-Linha 4 - Número de ocorrências da palavra: 3 Posição de ocorrência: 19
-Linha 1 - Número de ocorrências da palavra: 1 Posição de ocorrência: 3
-Linha 1 - Número de ocorrências da palavra: 2 Posição de ocorrência: 8
-Linha 1 - Número de ocorrências da palavra: 3 Posição de ocorrência: 14
-Linha 2 - Número de ocorrências da palavra: 1 Posição de ocorrência: 5
-Linha 2 - Número de ocorrências da palavra: 2 Posição de ocorrência: 13
-Linha 3 - Número de ocorrências da palavra: 1 Posição de ocorrência: 4
-Linha 3 - Número de ocorrências da palavra: 2 Posição de ocorrência: 5
-Linha 3 - Número de ocorrências da palavra: 3 Posição de ocorrência: 9
-Linha 4 - Número de ocorrências da palavra: 1 Posição de ocorrência: 3
-Linha 4 - Número de ocorrências da palavra: 2 Posição de ocorrência: 9
-Linha 4 - Número de ocorrências da palavra: 3 Posição de ocorrência: 22
+﻿Total de ocorrências na linha 1: 3
+Posições: [3, 14, 28]
+Total de ocorrências na linha 2: 2
+Posições: [6, 21]
+Total de ocorrências na linha 3: 5
+Posições: [0, 11, 22, 33, 45]
+Total de ocorrências na linha 4: 2
+Posições: [0, 11]
+Total de ocorrências na linha 5: 3
+Posições: [5, 10, 21]
+Total de ocorrências na linha 6: 2
+Posições: [4, 10]
+Total de ocorrências na linha 7: 2
+Posições: [6, 32]
