@@ -5,15 +5,13 @@
     PALOMA GOMES - 13.2.8564
     TALITA SANTOS -  14.1.8335
 
-*/
-
-
+ */
 package boyermoore;
 
 import java.util.Scanner;
 
 public class main {
-    
+
     public static void main(String[] args) {
         
         Scanner leitura = new Scanner(System.in);
@@ -25,9 +23,21 @@ public class main {
         String key2 = "";
         key2 = leitura.nextLine();
         
-        Algoritmo a = new Algoritmo();
-        a.preProcessamento(key);
-        a.leArquivo(key2);
+        int opcao;
+        System.out.println("Escolha o tipo de entrada:");
+        System.out.println("1 - Arquivo menor que a RAM");
+        System.out.println("2 - Arquivo maior que a RAM (O TAMANHO DA RAM É DE 1000 BYTES!)");
+        opcao = leitura.nextInt();
         
+        if(opcao == 1){
+            Algoritmo a = new Algoritmo();
+            a.preProcessamento(key);
+            a.leArquivo(key2);
+        }else{
+            Diferencial d = new Diferencial();
+            d.preProcessamento(key);
+            d.abreArquivo(key2);
+        }
+
     }
 }
