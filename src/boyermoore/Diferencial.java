@@ -26,7 +26,7 @@ public class Diferencial extends Algoritmo{
 
         } catch (IOException e) {
             linha = "NULL";
-            System.out.println("Erro ao abrir o arquivo diferencial.txt");
+            System.out.println("Erro ao abrir o arquivo entradaDiferencial.txt");
         }
     }
 
@@ -71,7 +71,7 @@ public class Diferencial extends Algoritmo{
             busca(texto, num, key2);//busca por ocorrencias da palavra chave no arquivo
 
         } catch (IOException ex) {
-            System.out.println("Erro ao escrever no arquivo saida1.txt");
+            System.out.println("Erro ao escrever no arquivo entradaDif.txt");
         }
     }
     
@@ -111,7 +111,7 @@ public class Diferencial extends Algoritmo{
                 posicoes.add(posicao);
             }
         }
-        saidaBusca(cont, (ArrayList)posicoes,num);//
+        saidaBusca(cont, (ArrayList)posicoes,num);
         substitui(frase, key2, cont, num);//realiza a substituicao 
     }
     
@@ -122,7 +122,7 @@ public class Diferencial extends Algoritmo{
             BufferedWriter sai = new BufferedWriter(saida);
 
             //escreve no arquivo
-            sai.write("Total de ocorrências na linha " + num + ": " + cont);
+            sai.write("Total de ocorrências no arquivo " + num + ": " + cont);
             sai.newLine();
             sai.write("Posições: " + posicoes);
             sai.newLine();
