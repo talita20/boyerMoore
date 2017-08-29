@@ -67,19 +67,17 @@ public class Algoritmo {
         try {
             FileReader arq = new FileReader("entrada1.txt");
             BufferedReader ent = new BufferedReader(arq);
-            linha = ent.readLine();
-            
+
+            int num = 1;//linha do arquivo
+            while (ent.ready()) {
+                linha = ent.readLine();
+                buscaPalavra(linha, num, key2);
+                num++;
+            }
             if (linha == null) {
                 System.out.println("O arquivo entrada1.txt está vazio!");
-            } else {
-                int num = 1;//linha do arquivo
-                while (ent.ready()) {
-                    linha = ent.readLine();
-                    buscaPalavra(linha, num, key2);
-                    num++;
-                }
-                ent.close();
             }
+            ent.close();
 
         } catch (IOException e) {
             linha = "NULL";
