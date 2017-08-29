@@ -67,14 +67,20 @@ public class Algoritmo {
         try {
             FileReader arq = new FileReader("entrada1.txt");
             BufferedReader ent = new BufferedReader(arq);
-
-            int num = 1;//linha do arquivo
-            while (ent.ready()) {
-                linha = ent.readLine();
-                buscaPalavra(linha, num, key2);
-                num++;
+            linha = ent.readLine();
+            
+            if (linha == null) {
+                System.out.println("O arquivo entrada1.txt está vazio!");
+            } else {
+                int num = 1;//linha do arquivo
+                while (ent.ready()) {
+                    linha = ent.readLine();
+                    buscaPalavra(linha, num, key2);
+                    num++;
+                }
+                ent.close();
             }
-            ent.close();
+
         } catch (IOException e) {
             linha = "NULL";
             System.out.println("Erro ao abrir o arquivo entrada1.txt");
@@ -169,7 +175,7 @@ public class Algoritmo {
             k -> contador da frase
             l -> contador auxiliar da frase
             flag -> se for 0, achou o padrao. Se for 1, "quase" achou o padrao
-        */
+         */
         int i = 0, j = 0, k = 0, l = 0, flag = 0;
         while (k < frase.length) {
             if (frase[k] == chave[j]) {

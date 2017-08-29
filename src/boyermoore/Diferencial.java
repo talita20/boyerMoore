@@ -18,12 +18,15 @@ public class Diferencial extends Algoritmo{
             FileReader arqGrande = new FileReader("entradaDiferencial.txt");
             BufferedReader entrada = new BufferedReader(arqGrande);
 
+            if (linha == null) {
+                System.out.println("O arquivo entradaDiferencial.txt está vazio!");
+            } else {
             while (entrada.ready()) {
                 linha = entrada.readLine();
             }
             entrada.close();
             divideArquivo(linha, limite, key2);
-
+            }
         } catch (IOException e) {
             linha = "NULL";
             System.out.println("Erro ao abrir o arquivo entradaDiferencial.txt");
